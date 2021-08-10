@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %> 
+<body>
+
+  <%- include('./partials/nav.ejs') %> 
+
+     <div class="container">
+        <ul class="collection with-header">
+            
+              <%if(items.length > 0){%>
+                
+                 <% items.forEach(element => { %>  
+
+                  <li class="collection-item">
+                    <div><i class="material-icons prefix">shopping_cart</i>
+                      <%= element.name %>   <%=  element.price %>$ <a href="#!" class="secondary-content">
+                      <i class="material-icons">delete</i>
+                      <i class="material-icons">edit</i>
+                      </a>
+                    </div>
+                  </li> 
+  
+                   <% }); %> 
+                
+
+                
+
+             <% } else {%>   
+                  <li>there are no items</li>
+              <% } %> 
+           
+
+            
+          </ul>
+     </div>
+
+
+
+     <%- include('./partials/footer.ejs') %> 
+
+     <script type="text/javascript">
+
+      document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.modal');
+          var instances = M.Modal.init(elems, {});
+      });
+  
+  </script>
+
+    
+</body>
+</html>

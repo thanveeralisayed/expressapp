@@ -1,0 +1,45 @@
+<nav  style="background-color: blueviolet;">
+    <div class="nav-wrapper container">
+      <a href="./" class="brand-logo">Home  </a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <!-- <li><a href="./add-item">Add items</a></li> -->
+        <li> <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">add</i>Add items</a></li>
+       
+
+        <div id="modal1"  class="modal">
+          <div class="modal-content">
+            <h4 style="color: rgb(68, 63, 63);">Add item details</h4>
+
+            <div class="row">
+              <form class="col s12" action="/items" method="POST">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">shopping_cart</i>
+                    <input  name="name" id="name" type="text" class="validate">
+                    <label for="name">Name</label>
+                  </div>
+                </div>
+
+                <div class="row">
+
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">request_quote</i>
+                    <input name="price" id="price" type="tel" class="validate">
+                    <label for="price">Price</label>
+                  </div>
+
+                </div>
+
+                <button class="modal-close waves-effect btn waves-green">Add</button>
+              </form>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <!-- <a href="#!" class="modal-close waves-effect btn waves-green">ADD</a> -->
+          </div>
+        </div>
+
+      </ul>
+    </div>
+  </nav>
