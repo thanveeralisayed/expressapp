@@ -32,6 +32,23 @@ app.post('/items',(req,res)=>{
     item.save().then(()=>res.redirect('/get-items'));
 })
 
+app.get('/items/:id',(req,res)=>{
+    const id = req.params.id;
+    Item.findById(id).then(result=>{
+        console.log(result);
+        res.render('item-detail',{item:result})
+    })
+})
+
+app.get('/delete/:id',(req,res)=>{
+    console.log('delete pressed');
+    const id = req.params.id;
+    Item.findByIdAndDelete(id).then(result=>{
+        console.log('deleted');
+        res.redirect('/get-items');
+    })
+})
+
 app.use((req,res)=>{
     res.render('error')
 })
