@@ -15,7 +15,12 @@
                   <li class="collection-item">
                     <div><i class="material-icons prefix">shopping_cart</i>
                       <a style="text-decoration: none;" href="/items/<%= element.id %> "><%= element.name %>   <%=  element.price %>$ </a><a href="#!" class="secondary-content">
-                      <i class="material-icons">delete</i>
+                      <i id="<%= element.id %>"  onclick="const endpoint =`/items/${this.id}`;
+                        fetch(endpoint,{
+                          method:'DELETE'
+                        }).then(res=>{
+                          res.json().then(data=>window.location.href = data.redirect)
+                        }).catch(err=>console.log(err));" class="material-icons">delete</i>
                       <i class="material-icons">edit</i>
                       </a>
                     </div>
@@ -40,6 +45,7 @@
      <%- include('./partials/footer.ejs') %> 
 
      <script type="text/javascript">
+
 
     
       document.addEventListener('DOMContentLoaded', function() {
