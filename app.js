@@ -40,14 +40,16 @@ app.get('/items/:id',(req,res)=>{
     })
 })
 
-app.get('/delete/:id',(req,res)=>{
-    console.log('delete pressed');
+app.delete('/items/:id',(req,res)=>{
     const id = req.params.id;
     Item.findByIdAndDelete(id).then(result=>{
-        console.log('deleted');
-        res.redirect('/get-items');
+        res.json({redirect:'/get-items'});
     })
+    
 })
+
+
+
 
 app.use((req,res)=>{
     res.render('error')

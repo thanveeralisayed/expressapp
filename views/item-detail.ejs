@@ -16,10 +16,10 @@
               <p><%= item.price %>$ </p>
             </div>
             <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-              <form action="/delete/<%= item._id %> " method="POST">
-                <p><button  class="red modal-close waves-effect btn waves-red">Delete</button></p>
-              </form>
+              <span class="card-title grey-text text-darken-4">More options<i class="material-icons right">close</i></span>
+              
+                <p><button id="deleteBtn" data-id="<%= item._id %> "  class="red modal-close waves-effect btn waves-red">Delete</button></p>
+              
               
             </div>
           </div>
@@ -32,6 +32,19 @@
     <%- include('./partials/footer.ejs') %> 
 
     <script type="text/javascript">
+
+    deleteBtn.onclick = function (e) {
+      e.preventDefault();
+      const id = deleteBtn.dataset.id;
+      console.log(id);
+      const endpoint =`/items/${id}`;
+      fetch(endpoint,{
+        method:'DELETE'
+      }).then(res=>{
+        res.json().then(data=>window.location.href = data.redirect)
+      }).catch(err=>console.log(err)); 
+    }
+
 
    
      document.addEventListener('DOMContentLoaded', function() {
